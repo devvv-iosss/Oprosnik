@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class SecondViewController: UIViewController {
     
     @IBOutlet var progressBar: UIProgressView!
@@ -58,9 +57,8 @@ class SecondViewController: UIViewController {
         thirdStackSlider.maximumValue = 4
         thirdStackSlider.minimumValue = 1
         thirdStackSlider.value = 3
-        
     }
-
+    
     @IBAction func firstStackButtonPressed(_ sender: UIButton) {
         switch sender.tag {
         case 0 :
@@ -103,7 +101,7 @@ class SecondViewController: UIViewController {
             navigationItem.title = "Вопрос № 3"
         }
     }
-  
+    
     @IBAction func switchesPressed(_ sender: UISwitch) {
         switch sender.tag {
         case 0 :
@@ -136,29 +134,25 @@ class SecondViewController: UIViewController {
         let progressNumber = progressBar.progress / Float(questions.allQuestions.count) //1/3
         progressBar.setProgress(progressNumber + progressNumber, animated: true)
     }
-  
+    
     func resultCheck() {
         if dogCounter > catCounter && dogCounter > rabbitCounter && dogCounter > turtleCounter {
             print("DogCounter is the winner")
             winner = animals.dog
-            print("Dog \(winner)")
         } else if catCounter > dogCounter && catCounter > rabbitCounter && catCounter > turtleCounter {
             print("CatCounter is a winner")
             winner = animals.cat
-            print("Cat \(winner)")
         } else if rabbitCounter > dogCounter && rabbitCounter > catCounter && rabbitCounter > turtleCounter {
             print("RabbitCounter is a winner")
             winner = animals.rabbit
-            print("rabbit \(winner)")
         } else if turtleCounter > dogCounter && turtleCounter > catCounter && turtleCounter > rabbitCounter {
             print("TurtleCounter is a winner")
             winner = animals.turtle
-            print("turtle \(winner)")
         } else {
             winner = "асьол"
         }
     }
-
+    
     @IBAction func thirdStackAnswerPressed() {
         if thirdStackSlider.value == 1 {
             dogCounter += 1
@@ -169,8 +163,6 @@ class SecondViewController: UIViewController {
         } else if thirdStackSlider.value == 4 {
             turtleCounter += 1
         }
-        print("Counters result is: \(dogCounter), \(catCounter), \(rabbitCounter), \(turtleCounter)")
-        resultCheck()
         
         performSegue(withIdentifier: "lastSegue", sender: nil)
     }
